@@ -27,9 +27,9 @@ const projects = [
   {
     title: "Portfolio Website",
     desc: "Modern animated portfolio featuring GSAP animations, Framer Motion interactions, and responsive design. Optimized for performance and SEO.",
-    img: "/projects/portfolio.jpg",
+    img: "/myportfolio.png",
     github: "#",
-    live: "#",
+    live: "https://shahneelabalochportfolio.vercel.app/",
     tags: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     featured: false
   },

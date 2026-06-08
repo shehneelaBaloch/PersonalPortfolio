@@ -127,7 +127,7 @@ export default function Hero() {
               </motion.a>
 
               <motion.a
-                href="#contact"
+                href="https://wa.me/923192038817"
                 className="group relative px-12 py-5 rounded-2xl border-2 border-green-400 text-green-400 font-bold text-xl transition-all duration-300 hover:scale-105 hover:bg-green-400 hover:text-black overflow-hidden backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

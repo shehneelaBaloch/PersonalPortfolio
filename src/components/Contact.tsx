@@ -22,7 +22,7 @@ export default function Contact() {
   const socialLinks = [
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/shahneela",
+      url: "https://www.linkedin.com/in/shahneelabaloch9090/",
       icon: <FaLinkedin className="text-white" size={28} />,
       color: "from-blue-500 to-blue-700",
       hoverColor: "hover:shadow-2xl hover:shadow-blue-500/25",
@@ -30,23 +30,16 @@ export default function Contact() {
     },
     {
       name: "GitHub",
-      url: "https://github.com/shahneela",
+      url: "https://github.com/shehneelaBaloch",
       icon: <FaGithub className="text-white" size={28} />,
       color: "from-gray-700 to-gray-900",
       hoverColor: "hover:shadow-2xl hover:shadow-gray-500/25",
       description: "Code & projects"
     },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/shahneela",
-      icon: <FaTwitter className="text-white" size={28} />,
-      color: "from-sky-400 to-sky-600",
-      hoverColor: "hover:shadow-2xl hover:shadow-sky-500/25",
-      description: "Thoughts & updates"
-    },
+   
     {
       name: "Email",
-      url: "mailto:shahneela@example.com",
+      url: "mailto:shahneelakhadi@gmail.com",
       icon: <FaEnvelope className="text-white" size={28} />,
       color: "from-red-500 to-red-700",
       hoverColor: "hover:shadow-2xl hover:shadow-red-500/25",
@@ -54,7 +47,7 @@ export default function Contact() {
     },
     {
       name: "Portfolio",
-      url: "https://shahneela.dev",
+      url: "https://shahneelabalochportfolio.vercel.app/",
       icon: <FaGlobe className="text-white" size={28} />,
       color: "from-purple-500 to-purple-700",
       hoverColor: "hover:shadow-2xl hover:shadow-purple-500/25",
@@ -62,7 +55,7 @@ export default function Contact() {
     },
     {
       name: "Resume",
-      url: "/resume.pdf",
+      url: "/ShehneelaZeendpurResume.pdf",
       icon: <FaDownload className="text-white" size={28} />,
       color: "from-green-500 to-green-700",
       hoverColor: "hover:shadow-2xl hover:shadow-green-500/25",
