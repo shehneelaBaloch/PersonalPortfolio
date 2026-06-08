@@ -198,7 +198,7 @@ export default function Contact() {
 
               {/* Primary CTA Button */}
               <motion.a
-                href="mailto:shahneela@example.com"
+                href="https://wa.me/923192038817"
                 className="group inline-flex items-center gap-4 px-12 py-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl font-bold text-lg text-white shadow-2xl shadow-green-400/25 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/40"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
