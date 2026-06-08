@@ -5,22 +5,23 @@ import { useRef } from "react";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 
 const projects = [
+  
   {
-    title: "Forex CRM Dashboard",
-    desc: "Advanced admin and broker CRM platform built with Next.js, MongoDB, and real-time analytics. Features multi-tier user management, payment processing, and comprehensive reporting.",
-    img: "/projects/forex.jpg",
+    title: "Sassy Snail",
+    desc: "A modern e-commerce web application built with React.js, featuring a sleek and responsive UI design. Developed dynamic product pages, interactive components, and optimized user experience for seamless browsing and checkout across all devices.",
+    img: "/sassy.webp",
     github: "#",
-    live: "#",
-    tags: ["Next.js", "MongoDB", "TypeScript", "Tailwind"],
-    featured: true
+    live: "https://sassysnail.netlify.app/",
+    tags: ["React.js", "Tailwind CSS", "TypeScript", "Node.js"],
+    featured: true,
   },
   {
     title: "Ecommerce Platform",
     desc: "Full-stack online store with Stripe payments, inventory management, and admin dashboard. Includes user authentication, cart functionality, and order tracking.",
-    img: "/projects/ecommerce.jpg",
+    img: "/eccommerce.png",
     github: "#",
-    live: "#",
-    tags: ["React", "Node.js", "Stripe", "PostgreSQL"],
+    live: "https://myshopeazy.vercel.app/",
+    tags: ["React", "Node.js", "Stripe", "Next.js", "MongoDB", "Tailwind", "TypeScript", "Express",],
     featured: true
   },
   {
@@ -33,29 +34,29 @@ const projects = [
     featured: false
   },
   {
-    title: "Task Management App",
-    desc: "Collaborative task management application with real-time updates, team collaboration, and project tracking features.",
-    img: "/projects/taskapp.jpg",
+    title: "AI Powered Path Generator",
+    desc: "An intelligent pathfinding application that utilizes AI algorithms to generate optimal routes in real-time.",
+    img: "/pic2.png",
     github: "#",
     live: "#",
-    tags: ["React", "Socket.io", "Express", "MongoDB"],
+    tags: ["Next.js", "Gemini"],
     featured: false
   },
   {
-    title: "Weather Dashboard",
-    desc: "Real-time weather application with beautiful data visualizations, location-based forecasts, and interactive maps.",
-    img: "/projects/weather.jpg",
+    title: "Weather",
+    desc: "Real-time weather app",
+    img: "/weather.png",
     github: "#",
-    live: "#",
-    tags: ["Vue.js", "API Integration", "Chart.js", "PWA"],
+    live: "https://breezecheck.netlify.app/",
+    tags: ["React", "API Integration", "css"],
     featured: false
   },
   {
-    title: "Social Media Analytics",
-    desc: "Comprehensive social media analytics dashboard with sentiment analysis, engagement metrics, and automated reporting.",
-    img: "/projects/analytics.jpg",
+    title: "AI Powered Code Optimizer",
+    desc: "Intelligent code optimization tool that leverages AI to improve code quality and performance.",
+    img: "/code.webp",
     github: "#",
-    live: "#",
+    live: "https://ai-code-optimizer-ashy.vercel.app/",
     tags: ["Python", "Django", "React", "Data Visualization"],
     featured: false
   }
