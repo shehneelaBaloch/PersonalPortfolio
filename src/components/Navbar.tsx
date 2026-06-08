@@ -28,7 +28,7 @@ export default function Navbar() {
           ))}
         </div>
         <a
-          href="/resume.pdf"
+          href="/ShehneelaZeendpurResume.pdf"
           target="_blank"
           className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 hover:opacity-90 transition"
         >
