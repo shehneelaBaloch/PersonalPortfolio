@@ -1,8 +1,19 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent, ReactNode } from "react";
 import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaGlobe, FaDownload } from "react-icons/fa";
+
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: ReactNode;
+  color: string;
+  hoverColor: string;
+  description: string;
+  isDownload: boolean;
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
+}
 
 export default function Contact() {
   const [showHeading, setShowHeading] = useState(true);
@@ -19,14 +30,29 @@ export default function Contact() {
     return () => clearTimeout(timer);
   }, []);
 
-  const socialLinks = [
+  // Handle resume download
+  const handleResumeDownload = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Create a link to download the PDF
+    const link = document.createElement('a');
+    link.href = '/ShehneelaZeendpurResume.pdf';
+    link.download = 'Shehneela_Baloch_Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const socialLinks: SocialLink[] = [
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/shahneelabaloch9090/",
       icon: <FaLinkedin className="text-white" size={28} />,
       color: "from-blue-500 to-blue-700",
       hoverColor: "hover:shadow-2xl hover:shadow-blue-500/25",
-      description: "Professional network"
+      description: "Professional network",
+      isDownload: false
     },
     {
       name: "GitHub",
@@ -34,16 +60,26 @@ export default function Contact() {
       icon: <FaGithub className="text-white" size={28} />,
       color: "from-gray-700 to-gray-900",
       hoverColor: "hover:shadow-2xl hover:shadow-gray-500/25",
-      description: "Code & projects"
+      description: "Code & projects",
+      isDownload: false
     },
-   
+    {
+      name: "Twitter",
+      url: "https://twitter.com/",
+      icon: <FaTwitter className="text-white" size={28} />,
+      color: "from-blue-400 to-blue-600",
+      hoverColor: "hover:shadow-2xl hover:shadow-blue-500/25",
+      description: "Follow me",
+      isDownload: false
+    },
     {
       name: "Email",
       url: "mailto:shahneelakhadi@gmail.com",
       icon: <FaEnvelope className="text-white" size={28} />,
       color: "from-red-500 to-red-700",
       hoverColor: "hover:shadow-2xl hover:shadow-red-500/25",
-      description: "Direct message"
+      description: "Direct message",
+      isDownload: false
     },
     {
       name: "Portfolio",
@@ -51,17 +87,28 @@ export default function Contact() {
       icon: <FaGlobe className="text-white" size={28} />,
       color: "from-purple-500 to-purple-700",
       hoverColor: "hover:shadow-2xl hover:shadow-purple-500/25",
-      description: "My work"
+      description: "My work",
+      isDownload: false
     },
     {
       name: "Resume",
-      url: "/ShehneelaZeendpurResume.pdf",
+      url: "#",
       icon: <FaDownload className="text-white" size={28} />,
       color: "from-green-500 to-green-700",
       hoverColor: "hover:shadow-2xl hover:shadow-green-500/25",
-      description: "Download CV"
+      description: "Download CV",
+      isDownload: true,
+      onClick: handleResumeDownload
     }
   ];
+
+  const handleCardClick = (social: SocialLink) => {
+    if (social.isDownload && social.onClick) {
+      social.onClick({} as MouseEvent<HTMLDivElement>);
+    } else if (social.url && social.url !== '#') {
+      window.open(social.url, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <section 
@@ -120,18 +167,16 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             {socialLinks.map((social, index) => (
-              <motion.a
+              <motion.div
                 key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 ${social.hoverColor} overflow-hidden`}
+                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 ${social.hoverColor} overflow-hidden cursor-pointer`}
                 whileHover={{ scale: 1.05, y: -8 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
                 viewport={{ once: true }}
+                onClick={() => handleCardClick(social)}
               >
                 {/* Gradient Background on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${social.color} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -153,7 +198,7 @@ export default function Contact() {
 
                 {/* Shine Effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-              </motion.a>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -197,16 +242,16 @@ export default function Contact() {
               </div>
 
               {/* Primary CTA Button */}
-              <motion.a
-                href="https://wa.me/923192038817"
-                className="group inline-flex items-center gap-4 px-12 py-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl font-bold text-lg text-white shadow-2xl shadow-green-400/25 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/40"
+              <motion.button
+                onClick={() => window.open('https://wa.me/923192038817', '_blank', 'noopener,noreferrer')}
+                className="group inline-flex items-center gap-4 px-12 py-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl font-bold text-lg text-white shadow-2xl shadow-green-400/25 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/40 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <FaEnvelope className="w-6 h-6" />
                 Start Conversation
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
 
