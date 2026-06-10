@@ -45,22 +45,22 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-purple-950 py-20 px-6"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-purple-950 py-12 sm:py-16 md:py-20 px-4 sm:px-6"
       data-scroll-section
     >
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-10 w-80 h-80 bg-green-600/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 -right-10 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-600/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 -left-10 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-green-600/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/4 -right-10 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-purple-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-teal-600/5 rounded-full blur-3xl animate-pulse"></div>
       </div>
 
       {/* Main Hero Section */}
-      <div className={`w-full max-w-7xl mx-auto ${showHero ? 'block' : 'hidden'}`}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center w-full">
+      <div className={`w-full max-w-7xl mx-auto ${showHero ? 'block' : 'hidden'} px-2 sm:px-0`}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center w-full">
           
-          {/* Enhanced Left Column - Content */}
-          <div className="space-y-10">
+          {/* Enhanced Left Column - Content - Now appears FIRST on mobile */}
+          <div className="space-y-6 sm:space-y-8 md:space-y-10 order-1 lg:order-1 mt-6">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -69,24 +69,24 @@ export default function Hero() {
             >
               {/* Enhanced Availability Badge */}
               <motion.div 
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-green-400/10 border border-green-400/30 backdrop-blur-sm mb-10 hover:border-green-400/50 transition-all duration-300 hover:scale-105 cursor-default"
+                className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl sm:rounded-2xl bg-green-400/10 border border-green-400/30 backdrop-blur-sm mb-6 sm:mb-8 md:mb-10 hover:border-green-400/50 transition-all duration-300 hover:scale-105 cursor-default"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
-                <span className="text-green-400 text-base font-semibold">
+                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-green-400 rounded-full animate-ping"></div>
+                <span className="text-green-400 text-xs sm:text-sm md:text-base font-semibold">
                   Available for new projects
                 </span>
               </motion.div>
 
               {/* Enhanced Main Title */}
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
-                <span className="block text-4xl md:text-5xl lg:text-6xl text-gray-400 mb-2">Hi, I'm</span>
-                <span className="relative inline-block mt-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-6 sm:mb-7 md:mb-8 leading-tight">
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-400 mb-2">Hi, I'm</span>
+                <span className="relative inline-block mt-3 sm:mt-4">
                   <span className="bg-gradient-to-r from-green-400 via-teal-400 to-purple-400 bg-clip-text text-transparent">
                     Shahneela
                   </span>
                   <motion.div 
-                    className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-purple-400 rounded-full"
+                    className="absolute -bottom-3 sm:-bottom-4 left-0 w-full h-0.5 sm:h-1 bg-gradient-to-r from-green-400 to-purple-400 rounded-full"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
@@ -96,7 +96,7 @@ export default function Hero() {
               </h1>
 
               {/* Enhanced Subtitle */}
-              <p className="text-2xl text-gray-300 leading-relaxed mb-8 bg-gradient-to-r from-gray-900/50 to-transparent p-6 rounded-2xl border border-gray-800/30 hover:border-green-500/20 transition-all duration-300">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed mb-6 sm:mb-7 md:mb-8 bg-gradient-to-r from-gray-900/50 to-transparent p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800/30 hover:border-green-500/20 transition-all duration-300">
                 Full Stack Developer specializing in modern web technologies. I create
                 <span className="text-green-400 font-semibold"> digital experiences </span>
                 that blend innovation with functionality.
@@ -105,7 +105,7 @@ export default function Hero() {
 
             {/* Enhanced CTA Buttons */}
             <motion.div 
-              className="flex flex-wrap gap-6"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -113,13 +113,13 @@ export default function Hero() {
             >
               <motion.a
                 href="#projects"
-                className="group relative px-12 py-5 rounded-2xl bg-gradient-to-r from-green-400 to-teal-500 text-black font-bold text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/30 overflow-hidden"
+                className="group relative px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-green-400 to-teal-500 text-black font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/30 overflow-hidden text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center gap-3">
+                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
                   View My Work
-                  <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </span>
@@ -128,13 +128,13 @@ export default function Hero() {
 
               <motion.a
                 href="https://wa.me/923192038817"
-                className="group relative px-12 py-5 rounded-2xl border-2 border-green-400 text-green-400 font-bold text-xl transition-all duration-300 hover:scale-105 hover:bg-green-400 hover:text-black overflow-hidden backdrop-blur-sm"
+                className="group relative px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 rounded-xl sm:rounded-2xl border-2 border-green-400 text-green-400 font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:bg-green-400 hover:text-black overflow-hidden backdrop-blur-sm text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="relative z-10 flex items-center gap-3">
+                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
                   Contact Me
-                  <svg className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </span>
@@ -143,18 +143,18 @@ export default function Hero() {
 
             {/* Enhanced Tech Stack */}
             <motion.div 
-              className="pt-8"
+              className="pt-4 sm:pt-6 md:pt-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <p className="text-lg text-gray-400 mb-4 font-medium">Tech Stack:</p>
-              <div className="flex flex-wrap gap-4">
+              <p className="text-base sm:text-lg text-gray-400 mb-3 sm:mb-4 font-medium">Tech Stack:</p>
+              <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
                 {["React", "Next.js", "TypeScript", "Node.js", "Tailwind", "Framer Motion", "MongoDB", "PostgreSQL"].map((skill, index) => (
                   <motion.span
                     key={index}
-                    className="px-6 py-3 bg-gray-800/50 backdrop-blur-sm rounded-xl text-base border border-gray-700 text-gray-300 hover:border-green-500/50 hover:text-green-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10 cursor-default"
+                    className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-gray-800/50 backdrop-blur-sm rounded-lg sm:rounded-xl text-xs sm:text-sm md:text-base border border-gray-700 text-gray-300 hover:border-green-500/50 hover:text-green-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10 cursor-default"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -165,8 +165,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Enhanced Right Column - Visual Elements with Image */}
-          <div className="space-y-10">
+          {/* Enhanced Right Column - Visual Elements with Image - Now appears AFTER content on mobile */}
+          <div className="space-y-6 sm:space-y-8 md:space-y-10 order-2 lg:order-2">
             <motion.div 
               className="relative group"
               initial={{ opacity: 0, x: 50 }}
@@ -175,14 +175,14 @@ export default function Hero() {
               viewport={{ once: true }}
             >
               {/* Enhanced Glow Effect */}
-              <div className="absolute -inset-6 bg-gradient-to-r from-green-600 via-teal-600 to-purple-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105"></div>
+              <div className="absolute -inset-3 sm:-inset-4 md:-inset-6 bg-gradient-to-r from-green-600 via-teal-600 to-purple-600 rounded-2xl sm:rounded-3xl blur-2xl opacity-30 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105"></div>
               
               {/* Main Card */}
-              <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-800/50 shadow-2xl">
+              <div className="relative bg-gray-900/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-gray-800/50 shadow-2xl">
                 {/* Animated Background Elements */}
                 <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-1/4 left-1/4 w-40 h-40 bg-green-400 rounded-full mix-blend-soft-light filter blur-2xl animate-pulse"></div>
-                  <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-500 rounded-full mix-blend-soft-light filter blur-2xl animate-pulse" style={{ animationDelay: "2s" }}></div>
+                  <div className="absolute top-1/4 left-1/4 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-green-400 rounded-full mix-blend-soft-light filter blur-2xl animate-pulse"></div>
+                  <div className="absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-purple-500 rounded-full mix-blend-soft-light filter blur-2xl animate-pulse" style={{ animationDelay: "2s" }}></div>
                 </div>
 
                 {/* Enhanced Animated Particles */}
@@ -212,22 +212,22 @@ export default function Hero() {
                 </div>
 
                 {/* Grid Pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px sm:bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
 
                 {/* Enhanced Image Content */}
                 <div className="relative z-10 text-center">
-                  <div className="w-80 h-80 mx-auto mb-8 relative">
+                  <div className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto mb-4 sm:mb-6 md:mb-8 relative">
                     {/* Outer Glow Ring */}
-                    <div className="absolute -inset-4 bg-gradient-to-r from-green-500 via-teal-400 to-purple-400 rounded-full opacity-60 blur-xl animate-spin-slow"></div>
+                    <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 bg-gradient-to-r from-green-500 via-teal-400 to-purple-400 rounded-full opacity-60 blur-xl animate-spin-slow"></div>
                     
                     {/* Middle Gradient Ring */}
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-purple-400 rounded-full animate-spin-slow" style={{ animationDuration: '10s' }}></div>
                     
                     {/* Image Container */}
-                    <div className="absolute inset-2 bg-gray-900 rounded-full flex items-center justify-center overflow-hidden border-4 border-gray-800/80 group-hover:border-green-500/50 transition-all duration-500">
+                    <div className="absolute inset-1 sm:inset-1.5 md:inset-2 bg-gray-900 rounded-full flex items-center justify-center overflow-hidden border-2 sm:border-3 md:border-4 border-gray-800/80 group-hover:border-green-500/50 transition-all duration-500">
                       <div className="relative w-full h-full">
                         <Image
-                          src="/image.jpg" // Update with your image path
+                          src="/image.jpg"
                           alt="Shahneela - Full Stack Developer"
                           width={320}
                           height={320}
@@ -241,7 +241,7 @@ export default function Hero() {
                         {/* Loading Skeleton */}
                         {!imageLoaded && (
                           <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full animate-pulse flex items-center justify-center">
-                            <div className="w-16 h-16 border-4 border-green-500/30 border-t-green-500 rounded-full animate-spin"></div>
+                            <div className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 border-2 sm:border-3 md:border-4 border-green-500/30 border-t-green-500 rounded-full animate-spin"></div>
                           </div>
                         )}
                         
@@ -251,8 +251,8 @@ export default function Hero() {
                     </div>
                     
                     {/* Floating Elements */}
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full animate-bounce"></div>
-                    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-green-400 rounded-full animate-bounce"></div>
+                    <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
                   </div>
                   
                   <motion.div
@@ -261,10 +261,10 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <h3 className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-green-400 via-teal-400 to-purple-400 bg-clip-text text-transparent">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 sm:mb-3 md:mb-4 bg-gradient-to-r from-green-400 via-teal-400 to-purple-400 bg-clip-text text-transparent">
                       Innovative Developer
                     </h3>
-                    <p className="text-gray-400 text-center text-lg leading-relaxed">
+                    <p className="text-gray-400 text-center text-sm sm:text-base md:text-lg leading-relaxed">
                       Building the future with cutting-edge technology & creative solutions
                     </p>
                   </motion.div>
@@ -274,7 +274,7 @@ export default function Hero() {
 
             {/* Enhanced Stats Grid */}
             <motion.div 
-              className="grid grid-cols-3 gap-6"
+              className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -287,14 +287,14 @@ export default function Hero() {
               ].map((stat, index) => (
                 <motion.div 
                   key={index} 
-                  className="text-center p-6 bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-800/50 hover:border-green-500/30 transition-all duration-300 hover:scale-105 group cursor-default"
+                  className="text-center p-3 sm:p-4 md:p-6 bg-gray-900/60 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-gray-800/50 hover:border-green-500/30 transition-all duration-300 hover:scale-105 group cursor-default"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300 mb-2`}>
+                  <div className={`text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300 mb-1 sm:mb-2`}>
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                  <div className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -319,9 +319,9 @@ export default function Hero() {
               }
             }}
           >
-            <div className="relative">
+            <div className="relative px-4 sm:px-0">
               <motion.h1
-                className="text-7xl md:text-9xl font-bold bg-gradient-to-r from-green-400 via-teal-400 to-purple-400 bg-clip-text text-transparent text-center relative z-10"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold bg-gradient-to-r from-green-400 via-teal-400 to-purple-400 bg-clip-text text-transparent text-center relative z-10"
                 initial={{ scale: 0.8, opacity: 0, y: 50 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
