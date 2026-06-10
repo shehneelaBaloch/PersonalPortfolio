@@ -237,24 +237,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* View More Button */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.a
-            href="#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-400 to-teal-500 text-black font-bold rounded-2xl hover:shadow-2xl hover:shadow-green-400/25 transition-all duration-300"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View All Projects
-            <FaArrowRight />
-          </motion.a>
-        </motion.div>
+
       </div>
     </section>
   );

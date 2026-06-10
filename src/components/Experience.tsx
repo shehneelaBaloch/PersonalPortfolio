@@ -2,6 +2,27 @@
 
 import { motion } from "framer-motion";
 import { useRef } from 'react';
+import { 
+  FaRocket, 
+  FaCode, 
+  FaBullseye, 
+  FaBolt,
+  FaReact,
+  FaJs,
+  FaCss3Alt,
+  FaBootstrap,
+  FaGitAlt,
+  FaNodeJs,
+  FaDatabase
+} from 'react-icons/fa';
+import { 
+  SiTailwindcss, 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiMongodb, 
+  SiMui,
+  SiFigma
+} from 'react-icons/si';
 
 // Enhanced Animated Timeline Component
 function EnhancedTimeline() {
@@ -15,7 +36,7 @@ function EnhancedTimeline() {
       period: "May 2024 - June 2024",
       description: "Developed and deployed full-stack web applications by converting complex Figma designs into responsive, real-world interfaces. Cloned modern UI layouts with pixel-perfect precision, integrated dynamic backend APIs, and optimized performance across the stack. Delivered all assigned tasks on time while ensuring code scalability and maintainability.",
       technologies: ["React", "Javascript", "CSS", "Bootstrap", "Material UI", "Figma"],
-      icon: "🚀"
+      icon: <FaRocket className="text-white text-sm" />
     },
     {
       id: 2,
@@ -24,7 +45,7 @@ function EnhancedTimeline() {
       period: "November 2024 - January 2025",
       description: "Built and deployed multiple interactive projects including a calculator, photo gallery, and personal portfolio using React.js and modern UI libraries. Focused on creating responsive, user-friendly interfaces with clean, reusable code. Collaborated with mentors and peers to refine design consistency, optimize performance, and enhance overall UI/UX experience.",
       technologies: ["React.js", "Bootstrap", "Material UI", "JavaScript", "Git"],
-      icon: "💻"
+      icon: <FaCode className="text-white text-sm" />
     },
     {
       id: 3,
@@ -33,7 +54,7 @@ function EnhancedTimeline() {
       period: "September 2025 - November 2025 (3 months Training)",
       description: "Currently gaining seamless experience in modern web development by working with the latest technologies and frameworks. Building and deploying scalable full-stack applications using Next.js, TypeScript, and Tailwind CSS while exploring AI-based web projects that integrate intelligent features and automation.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "REST APIs", "AI Integrations"],
-      icon: "🎯"
+      icon: <FaBullseye className="text-white text-sm" />
     },
     {
       id: 4,
@@ -42,7 +63,7 @@ function EnhancedTimeline() {
       period: "July 2025 - Present",
       description: "Currently gaining hands-on experience in building and deploying scalable full-stack applications using Next.js, TypeScript, and Tailwind CSS. Collaborating with cross-functional teams to design modern, responsive, and high-performing web interfaces.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "REST APIs"],
-      icon: "⚡"
+      icon: <FaBolt className="text-white text-sm" />
     }
   ];
 
@@ -63,9 +84,9 @@ function EnhancedTimeline() {
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            {/* Enhanced Timeline dot */}
-            <div className="absolute left-8 lg:left-1/2 w-8 h-8 bg-gradient-to-r from-green-400 to-cyan-500 rounded-full border-4 border-gray-900 shadow-lg shadow-green-400/30 z-10 transform -translate-x-1/2 flex items-center justify-center">
-              <span className="text-xs font-bold text-white">{exp.icon}</span>
+            {/* Enhanced Timeline dot with icon */}
+            <div className="absolute left-8 lg:left-1/2 w-10 h-10 bg-gradient-to-r from-green-400 to-cyan-500 rounded-full border-4 border-gray-900 shadow-lg shadow-green-400/30 z-10 transform -translate-x-1/2 flex items-center justify-center">
+              {exp.icon}
             </div>
             
             {/* Enhanced Content card */}
@@ -83,14 +104,14 @@ function EnhancedTimeline() {
 
                 <div className="relative z-10">
                   {/* Header with Icon and Period */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
+                  <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-4">
+                    <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-2 group-hover:bg-gradient-to-r group-hover:from-green-400 group-hover:to-cyan-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                         {exp.title}
                       </h3>
                       <h4 className="text-lg font-semibold text-cyan-400 mb-1">{exp.company}</h4>
                     </div>
-                    <span className="text-sm font-bold bg-gradient-to-r from-green-500 to-cyan-500 text-white px-4 py-2 rounded-full shadow-lg">
+                    <span className="text-sm font-bold bg-gradient-to-r from-green-500 to-cyan-500 text-white px-4 py-2 rounded-full shadow-lg whitespace-nowrap">
                       {exp.period}
                     </span>
                   </div>
@@ -102,16 +123,52 @@ function EnhancedTimeline() {
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-3">
-                    {exp.technologies.map((tech, techIndex) => (
-                      <motion.span
-                        key={techIndex}
-                        className="text-sm font-medium bg-gray-800/50 text-gray-300 px-4 py-2 rounded-xl border border-gray-700/50 hover:border-green-400/50 hover:text-green-300 transition-all duration-300 cursor-default backdrop-blur-sm"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
+                    {exp.technologies.map((tech, techIndex) => {
+                      // Map technology names to icons
+                      const getTechIcon = (techName: string) => {
+                        switch(techName.toLowerCase()) {
+                          case 'react':
+                          case 'react.js':
+                            return <FaReact className="inline mr-2 text-cyan-400" />;
+                          case 'javascript':
+                            return <FaJs className="inline mr-2 text-yellow-400" />;
+                          case 'css':
+                            return <FaCss3Alt className="inline mr-2 text-blue-400" />;
+                          case 'bootstrap':
+                            return <FaBootstrap className="inline mr-2 text-purple-400" />;
+                          case 'material ui':
+                            return <SiMui className="inline mr-2 text-blue-400" />;
+                          case 'figma':
+                            return <SiFigma className="inline mr-2 text-pink-400" />;
+                          case 'git':
+                            return <FaGitAlt className="inline mr-2 text-orange-400" />;
+                          case 'next.js':
+                            return <SiNextdotjs className="inline mr-2 text-white" />;
+                          case 'typescript':
+                            return <SiTypescript className="inline mr-2 text-blue-400" />;
+                          case 'tailwind css':
+                            return <SiTailwindcss className="inline mr-2 text-cyan-400" />;
+                          case 'node.js':
+                            return <FaNodeJs className="inline mr-2 text-green-400" />;
+                          case 'mongodb':
+                            return <SiMongodb className="inline mr-2 text-green-400" />;
+                          default:
+                            return null;
+                        }
+                      };
+                      
+                      return (
+                        <motion.span
+                          key={techIndex}
+                          className="text-sm font-medium bg-gray-800/50 text-gray-300 px-4 py-2 rounded-xl border border-gray-700/50 hover:border-green-400/50 hover:text-green-300 transition-all duration-300 cursor-default backdrop-blur-sm inline-flex items-center gap-2"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                          {getTechIcon(tech)}
+                          {tech}
+                        </motion.span>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>
@@ -222,7 +279,7 @@ export default function Experience() {
       </div>
 
       {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full blur-3xl animate-pulse"></div>
         <div
           className="absolute bottom-20 right-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl animate-pulse"
@@ -231,7 +288,7 @@ export default function Experience() {
       </div>
 
       {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
     </section>
   );
 }

@@ -1,125 +1,65 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, MouseEvent, ReactNode } from "react";
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaGlobe, FaDownload } from "react-icons/fa";
-
-interface SocialLink {
-  name: string;
-  url: string;
-  icon: ReactNode;
-  color: string;
-  hoverColor: string;
-  description: string;
-  isDownload: boolean;
-  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
-}
+import { useState, useEffect } from "react";
+import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaGlobe, FaDownload, FaWhatsapp } from "react-icons/fa";
 
 export default function Contact() {
   const [showHeading, setShowHeading] = useState(true);
   const [showContact, setShowContact] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Show heading first, then animate it away and show contact section
     const timer = setTimeout(() => {
       setShowHeading(false);
-      // Small delay before showing contact section
       setTimeout(() => setShowContact(true), 500);
     }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle resume download
-  const handleResumeDownload = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    // Create a link to download the PDF
-    const link = document.createElement('a');
-    link.href = '/ShehneelaZeendpurResume.pdf';
-    link.download = 'Shehneela_Baloch_Resume.pdf';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  // Simple copy to clipboard function
+  const copyEmail = () => {
+    navigator.clipboard.writeText("balochshahneela378@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
-  const socialLinks: SocialLink[] = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/shahneelabaloch9090/",
-      icon: <FaLinkedin className="text-white" size={28} />,
-      color: "from-blue-500 to-blue-700",
-      hoverColor: "hover:shadow-2xl hover:shadow-blue-500/25",
-      description: "Professional network",
-      isDownload: false
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/shehneelaBaloch",
-      icon: <FaGithub className="text-white" size={28} />,
-      color: "from-gray-700 to-gray-900",
-      hoverColor: "hover:shadow-2xl hover:shadow-gray-500/25",
-      description: "Code & projects",
-      isDownload: false
-    },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/",
-      icon: <FaTwitter className="text-white" size={28} />,
-      color: "from-blue-400 to-blue-600",
-      hoverColor: "hover:shadow-2xl hover:shadow-blue-500/25",
-      description: "Follow me",
-      isDownload: false
-    },
-    {
-      name: "Email",
-      url: "mailto:shahneelakhadi@gmail.com",
-      icon: <FaEnvelope className="text-white" size={28} />,
-      color: "from-red-500 to-red-700",
-      hoverColor: "hover:shadow-2xl hover:shadow-red-500/25",
-      description: "Direct message",
-      isDownload: false
-    },
-    {
-      name: "Portfolio",
-      url: "https://shahneelabalochportfolio.vercel.app/",
-      icon: <FaGlobe className="text-white" size={28} />,
-      color: "from-purple-500 to-purple-700",
-      hoverColor: "hover:shadow-2xl hover:shadow-purple-500/25",
-      description: "My work",
-      isDownload: false
-    },
-    {
-      name: "Resume",
-      url: "#",
-      icon: <FaDownload className="text-white" size={28} />,
-      color: "from-green-500 to-green-700",
-      hoverColor: "hover:shadow-2xl hover:shadow-green-500/25",
-      description: "Download CV",
-      isDownload: true,
-      onClick: handleResumeDownload
-    }
-  ];
+  const handleLinkedIn = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    window.open("https://www.linkedin.com/in/shahneelabaloch9090/", "_blank", "noopener,noreferrer");
+  };
 
-  const handleCardClick = (social: SocialLink) => {
-    if (social.isDownload && social.onClick) {
-      social.onClick({} as MouseEvent<HTMLDivElement>);
-    } else if (social.url && social.url !== '#') {
-      window.open(social.url, '_blank', 'noopener,noreferrer');
-    }
+  const handleGitHub = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    window.open("https://github.com/shehneelaBaloch", "_blank", "noopener,noreferrer");
+  };
+
+  
+  const handlePortfolio = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    window.open("https://shahneelabalochportfolio.vercel.app/", "_blank", "noopener,noreferrer");
+  };
+
+  const handleResume = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const resumePath = "/ShehneelaZeendpurResume.pdf";
+    window.open(resumePath, "_blank", "noopener,noreferrer");
+  };
+
+  const handleWhatsApp = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    window.open("https://wa.me/923192038817", "_blank", "noopener,noreferrer");
   };
 
   return (
     <section 
       id="contact" 
       className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-purple-950 w-full py-20"
-      data-scroll-section
     >
-      {/* Main Contact Section - Always in DOM but hidden initially */}
       <div className={`w-full ${showContact ? 'block' : 'hidden'}`}>
         <div className="max-w-7xl mx-auto w-full px-6 lg:px-8">
-          {/* Enhanced Header */}
+          {/* Header */}
           <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 50 }}
@@ -158,51 +98,101 @@ export default function Contact() {
             </motion.p>
           </motion.div>
 
-          {/* Enhanced Social Links Grid */}
-          <motion.div
-            className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            {socialLinks.map((social, index) => (
-              <motion.div
-                key={social.name}
-                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 ${social.hoverColor} overflow-hidden cursor-pointer`}
-                whileHover={{ scale: 1.05, y: -8 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
-                viewport={{ once: true }}
-                onClick={() => handleCardClick(social)}
-              >
-                {/* Gradient Background on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${social.color} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
-                {/* Icon Container */}
-                <div className={`relative z-10 p-4 rounded-2xl bg-gradient-to-r ${social.color} shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                  {social.icon}
-                </div>
+          {/* Social Links Grid */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            {/* LinkedIn */}
+            <motion.div
+              onClick={handleLinkedIn}
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 overflow-hidden cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <FaLinkedin className="text-white" size={28} />
+              </div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl font-bold text-white mb-2">LinkedIn</h3>
+                <p className="text-gray-400 text-sm">Professional network</p>
+              </div>
+            </motion.div>
 
-                {/* Content */}
-                <div className="relative z-10 text-center">
-                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-300">
-                    {social.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-                    {social.description}
-                  </p>
-                </div>
+            {/* GitHub */}
+            <motion.div
+              onClick={handleGitHub}
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:shadow-2xl hover:shadow-gray-500/25 overflow-hidden cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-900 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-r from-gray-700 to-gray-900 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <FaGithub className="text-white" size={28} />
+              </div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl font-bold text-white mb-2">GitHub</h3>
+                <p className="text-gray-400 text-sm">Code & projects</p>
+              </div>
+            </motion.div>
 
-                {/* Shine Effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-              </motion.div>
-            ))}
-          </motion.div>
+         
+           
+             
+          
 
-          {/* Enhanced Contact Info & CTA */}
+            {/* Email - Simple display without mailto */}
+            <div className="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/25">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-r from-red-500 to-red-700 shadow-lg">
+                <FaEnvelope className="text-white" size={28} />
+              </div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl font-bold text-white mb-2">Email</h3>
+                <p className="text-gray-300 text-sm break-all">balochshahneela378@gmail.com</p>
+                <button
+                  onClick={copyEmail}
+                  className="mt-3 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-green-400 text-sm font-semibold transition-all duration-300"
+                >
+                  {copied ? "✅ Copied!" : "📋 Copy Email"}
+                </button>
+              </div>
+            </div>
+
+            {/* Portfolio */}
+            <motion.div
+              onClick={handlePortfolio}
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/25 overflow-hidden cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-700 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-r from-purple-500 to-purple-700 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <FaGlobe className="text-white" size={28} />
+              </div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl font-bold text-white mb-2">Portfolio</h3>
+                <p className="text-gray-400 text-sm">My work</p>
+              </div>
+            </motion.div>
+
+            {/* Resume */}
+            <motion.div
+              onClick={handleResume}
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/60 border border-gray-800/50 backdrop-blur-sm flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/25 overflow-hidden cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-700 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-r from-green-500 to-green-700 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                <FaDownload className="text-white" size={28} />
+              </div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl font-bold text-white mb-2">Resume</h3>
+                <p className="text-gray-400 text-sm">Download CV</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Contact Info & CTA */}
           <motion.div
             className="max-w-4xl mx-auto text-center p-12 bg-gradient-to-r from-gray-900/60 to-black/60 rounded-3xl border border-gray-800/50 backdrop-blur-sm relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -210,7 +200,6 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            {/* Background Elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-green-500 rounded-full mix-blend-soft-light filter blur-xl animate-pulse"></div>
               <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-cyan-500 rounded-full mix-blend-soft-light filter blur-xl animate-pulse" style={{ animationDelay: "2s" }}></div>
@@ -225,7 +214,6 @@ export default function Contact() {
                 Let's discuss how we can work together to bring your vision to life.
               </p>
 
-              {/* Quick Contact Info */}
               <div className="flex flex-wrap justify-center gap-8 mb-8">
                 <div className="text-center">
                   <div className="text-sm text-gray-400 mb-2">Response Time</div>
@@ -241,21 +229,20 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Primary CTA Button */}
+              {/* WhatsApp Button */}
               <motion.button
-                onClick={() => window.open('https://wa.me/923192038817', '_blank', 'noopener,noreferrer')}
+                onClick={handleWhatsApp}
                 className="group inline-flex items-center gap-4 px-12 py-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl font-bold text-lg text-white shadow-2xl shadow-green-400/25 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/40 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaEnvelope className="w-6 h-6" />
+                <FaWhatsapp className="w-6 h-6" />
                 Start Conversation
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
               </motion.button>
             </div>
           </motion.div>
 
-          {/* Footer Note */}
           <motion.div
             className="text-center mt-12"
             initial={{ opacity: 0 }}
@@ -270,7 +257,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Animated Heading Layer - Only this animates */}
+      {/* Animated Heading */}
       <AnimatePresence>
         {showHeading && (
           <motion.div
@@ -279,10 +266,7 @@ export default function Contact() {
             exit={{
               opacity: 0,
               y: -100,
-              transition: {
-                duration: 0.8,
-                ease: "easeInOut"
-              }
+              transition: { duration: 0.8, ease: "easeInOut" }
             }}
           >
             <motion.h1
@@ -297,17 +281,13 @@ export default function Contact() {
         )}
       </AnimatePresence>
 
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full blur-3xl animate-pulse"></div>
-        <div
-          className="absolute bottom-20 right-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
       </div>
 
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
     </section>
   );
 }
