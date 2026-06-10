@@ -58,7 +58,7 @@ function EnhancedTimeline() {
       id: 4,
       title: "Web Developer",
       company: "GMG Solutions Hyderabad",
-      period: "July 2025 - Present",
+      period: "July 2024 - March 2026",
       description: "Currently gaining hands-on experience in building and deploying scalable full-stack applications using Next.js, TypeScript, and Tailwind CSS. Collaborating with cross-functional teams to design modern, responsive, and high-performing web interfaces.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "REST APIs"],
       icon: <FaBolt className="text-white text-xs" />

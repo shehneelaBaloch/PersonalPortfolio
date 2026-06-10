@@ -9,10 +9,11 @@ import {
   SiTailwindcss,
   SiFramer,
   SiTypescript,
-  
   SiExpress,
   SiVercel,
+  SiGooglecloud,
 } from "react-icons/si";
+import { SiReplit } from "react-icons/si";
 
 const skills = [
   { icon: <SiNextdotjs className="text-white" size={32} />, name: "Next.js", level: "Expert", color: "from-white to-gray-400" },
@@ -25,7 +26,9 @@ const skills = [
   { icon: <FaGithub className="text-gray-300" size={32} />, name: "GitHub", level: "Advanced", color: "from-gray-300 to-gray-400" },
   { icon: <SiExpress className="text-gray-300" size={32} />, name: "Express.js", level: "Advanced", color: "from-gray-300 to-gray-500" },
   { icon: <SiVercel className="text-white" size={32} />, name: "Vercel", level: "Expert", color: "from-white to-gray-300" },
-
+  // AI & LLM Skills
+  { icon: <SiGooglecloud className="text-blue-400" size={32} />, name: "Google Gemini", level: "Expert", color: "from-blue-400 to-indigo-500" },
+  { icon: <SiReplit className="text-teal-400" size={32} />, name: "Replit AI", level: "Advanced", color: "from-teal-400 to-emerald-500" },
 ];
 
 export default function Skills() {
@@ -100,7 +103,7 @@ export default function Skills() {
             </motion.p>
           </motion.div>
 
-          {/* Enhanced Skills Grid - Simplified */}
+          {/* Skills Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {skills.map((skill, idx) => (
               <motion.div
@@ -117,10 +120,10 @@ export default function Skills() {
                 }}
                 viewport={{ once: true }}
               >
-                {/* Enhanced Hover Glow */}
+                {/* Hover Glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 via-cyan-400/5 to-purple-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 
-                {/* Animated Border Gradient */}
+                {/* Border Gradient */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-400/20 via-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div className="relative z-10">
@@ -148,7 +151,7 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Enhanced Footer Info */}
+          {/* Footer Info */}
           <motion.div
             className="text-center mt-20 p-12 bg-gradient-to-r from-gray-900/60 to-black/60 rounded-3xl border border-gray-800/50 backdrop-blur-sm relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -173,7 +176,7 @@ export default function Skills() {
               
               {/* Current Learning */}
               <div className="mt-8 inline-flex flex-wrap gap-4 justify-center">
-                {["Three.js", "React Native", "Python", "Machine Learning"].map((tech, index) => (
+                {["Gemini API", "Replit AI Agents", "Vector Search", "Prompt Engineering"].map((tech, index) => (
                   <span
                     key={index}
                     className="px-5 py-2 bg-gradient-to-r from-green-400/10 to-cyan-400/10 rounded-full text-sm border border-green-400/30 text-green-400 hover:scale-105 transition-all duration-300 cursor-default"
