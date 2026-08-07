@@ -38,7 +38,7 @@ const projects = [
     desc: "An intelligent pathfinding application that utilizes AI algorithms to generate optimal routes in real-time.",
     img: "/pic2.png",
     github: "#",
-    live: "#",
+    live: "https://pathforge-mu-three.vercel.app/",
     tags: ["Next.js", "Gemini"],
     featured: false
   },
